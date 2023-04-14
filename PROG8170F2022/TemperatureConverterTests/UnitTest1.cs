@@ -175,6 +175,23 @@ namespace PROG8170F2022.Tests
         }
 
         [Test]
+        
+
+        public void Test_TemperatureConverter_ReturnsOutOfRange_ForNaN()
+        {
+            // Arrange
+            Temp temp = new Temp();
+            float ambientTemp = float.NaN;
+
+            // Act
+            string result = temp.TemperatureConverter(ambientTemp);
+
+            // Assert
+            Assert.AreEqual("Your input temperature is not within the acceptable range", result);
+        }
+
+
+        [Test]
         public void Test_TemperatureConverter_ReturnsOutOfRange_ForNegativeTemperature()
         {
             // Arrange
@@ -187,7 +204,6 @@ namespace PROG8170F2022.Tests
             // Assert
             Assert.AreEqual("Your input temperature is not within the acceptable range", result);
         }
-
 
         [Test]
         public void Test_TemperatureConverter_ReturnsOutOfRange_For41Degrees()
@@ -203,13 +219,12 @@ namespace PROG8170F2022.Tests
             Assert.AreEqual("Your input temperature is not within the acceptable range", result);
         }
 
-        
         [Test]
-        public void Test_TemperatureConverter_ReturnsOutOfRange_ForNaN()
+        public void Test_TemperatureConverter_ReturnsOutOfRange_For65Degrees()
         {
             // Arrange
             Temp temp = new Temp();
-            float ambientTemp = float.NaN;
+            float ambientTemp = 65;
 
             // Act
             string result = temp.TemperatureConverter(ambientTemp);
